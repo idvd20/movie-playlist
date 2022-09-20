@@ -1,5 +1,9 @@
+require_relative 'rankable'
+
 class Movie
-    attr_reader :rank
+    include Rankable
+
+    attr_accessor :rank
     attr_accessor :title
 
     def initialize(title, rank=0)
@@ -32,30 +36,6 @@ class Movie
 
     def carbs_consumed
         @snack_carbs.values.reduce(0, :+)    
-    end
-
-    def hit?
-        @rank >= 10
-    end
-
-    def status
-        hit? ? "Hit" : "Flop"
-    end
-
-    def normalized_rank
-        @rank / 10
-    end
-
-    def thumbs_up
-        @rank += 1
-    end
-
-    def thumbs_down
-        @rank -= 1
-    end
-
-    def <=>(other_movie)
-        other_movie.rank <=> @rank
     end
 
     def to_s
