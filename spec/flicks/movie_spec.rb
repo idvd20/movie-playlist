@@ -1,4 +1,4 @@
-require_relative 'movie'
+require 'flicks/movie'
 require_relative 'spec_helper'
 
 describe Movie do
